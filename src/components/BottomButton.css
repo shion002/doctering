@@ -1,0 +1,15 @@
+.BottomButton {
+  cursor: pointer;
+  position: relative;
+}
+
+.alert-dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background-color: rgb(2, 194, 2);
+  position: absolute;
+  top: 0px;
+  left: 45px;
+}

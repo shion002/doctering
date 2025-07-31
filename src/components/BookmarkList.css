@@ -1,0 +1,54 @@
+.BookmarkList > .bookmark {
+  padding: 15px;
+  border: 1px solid rgb(185, 212, 204);
+  margin: 10px 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.BookmarkList > .bookmark > .bookmark_address {
+  color: rgb(87, 129, 129);
+}
+.BookmarkList > .bookmark > .bookmark_tab_action {
+  position: absolute;
+  width: 97%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  cursor: auto;
+  border-radius: 5px;
+  background-color: white;
+  z-index: 1002;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.BookmarkList {
+  position: relative;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(40, 40, 40, 0.5);
+  z-index: 999;
+}
+.bookmark.blurred {
+  pointer-events: none;
+}
+.bookmark.focused {
+  position: relative;
+  z-index: 1000;
+  background-color: white;
+  pointer-events: none;
+}
+
+.bookmark_tab_action.below {
+  top: 180px;
+}
+
+.bookmark_tab_action.above {
+  bottom: 180px;
+}

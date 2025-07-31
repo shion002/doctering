@@ -1,0 +1,61 @@
+.BookmarkTab > .bookmark_tab_name {
+  margin-bottom: 5px;
+  padding: 0 10px;
+}
+.BookmarkTab > .bookmark_tab_address {
+  font-size: 14px;
+  color: rgb(163, 163, 163);
+  margin-top: 0;
+  padding: 0 10px;
+}
+
+.BookmarkTab > .bookmark_tab_departments_title {
+  margin-bottom: 5px;
+  padding: 0 10px;
+}
+
+.BookmarkTab > .bookmark_tab_departments {
+  margin-top: 0;
+  font-size: 14px;
+  color: rgb(95, 95, 95);
+  padding: 0 10px;
+}
+
+.BookmarkTab > .bookmark_tab_memo_title {
+  margin-bottom: 5px;
+  padding: 0 10px;
+}
+.BookmarkTab > .bookmark_tab_memo {
+  background-color: rgb(241, 241, 255);
+  font-size: 14px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.BookmarkTab > .bookmark_tab_memo > .bookmark_tab_memo_default {
+  align-self: center;
+  color: rgb(78, 78, 78);
+}
+
+.BookmarkTab > .bookmark_tab_button {
+  width: 100%;
+  display: flex;
+}
+.BookmarkTab > .bookmark_tab_button > button {
+  flex: 1;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+}
+.BookmarkTab > .bookmark_tab_button > .bookmark_tab_reserve {
+  background-color: rgb(125, 107, 230);
+  color: white;
+}
+
+.BookmarkTab > .bookmark_tab_button > .bookmark_tab_cancel {
+  background-color: rgb(230, 107, 107);
+  color: white;
+}
