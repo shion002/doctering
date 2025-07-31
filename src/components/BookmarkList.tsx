@@ -94,7 +94,12 @@ const BookmarkList = ({ selectIndex, setSelectIndex }: BookmarkListProps) => {
                 tabDirection === "up" ? "above" : "below"
               }`}
             >
-              <BookmarkTab bookmarkHospital={bookmarkList} />
+              <BookmarkTab
+                bookmarkHospital={{
+                  ...bookmarkList,
+                  departments: bookmarkList.departments || "",
+                }}
+              />
             </div>
           )}
         </div>

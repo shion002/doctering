@@ -9,8 +9,32 @@ const Step4SymptomResult = () => {
     const { category: selectedSymptom } = useCategoryContext();
     const [userLocation, setUserLocation] = useState(null);
     const [hospitals, setHospitals] = useState([]);
-    const result = selectedSymptom &&
-        CategoryMap[4][selectedSymptom]?.[0];
+    // 타입 안전하게 result 가져오기
+    const getSymptomResult = () => {
+        if (!selectedSymptom)
+            return undefined;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const symptomData = CategoryMap[4][selectedSymptom];
+        if (!symptomData ||
+            !Array.isArray(symptomData) ||
+            symptomData.length === 0) {
+            return undefined;
+        }
+        const rawResult = symptomData[0];
+        // 타입을 맞춰서 반환
+        return {
+            disease: Array.isArray(rawResult.disease) ? [...rawResult.disease] : [],
+            measures: Array.isArray(rawResult.measures)
+                ? [...rawResult.measures]
+                : [],
+            department: Array.isArray(rawResult.department)
+                ? [...rawResult.department]
+                : undefined,
+            serverity: rawResult.serverity ? String(rawResult.serverity) : undefined,
+            recommendVisit: Boolean(rawResult.recommendVisit),
+        };
+    };
+    const result = getSymptomResult();
     // 위치 받아오기
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((pos) => {
@@ -23,7 +47,7 @@ const Step4SymptomResult = () => {
     const token = localStorage.getItem("token");
     // 병원 추천 요청
     useEffect(() => {
-        if (userLocation && result?.department?.length > 0) {
+        if (userLocation && result?.department && result.department.length > 0) {
             const headers = token
                 ? { Authorization: `Bearer ${token}`, withCredentials: true }
                 : {};

@@ -673,16 +673,6 @@ export const CategoryMap = {
                 ],
             },
         ],
-        [SymptomCategory.SHORTNESS_OF_BREATH]: [
-            {
-                disease: ["심부전", "천식", "폐렴", "폐색전증"],
-                measures: [
-                    "편한 자세(상체를 세워 앉기)",
-                    "문 열고 환기",
-                    "필요시 즉시 119",
-                ],
-            },
-        ],
         [SymptomCategory.WHEEZING]: [
             {
                 disease: ["천식", "기관지염", "알레르기 반응"],

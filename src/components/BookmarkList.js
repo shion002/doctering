@@ -53,6 +53,9 @@ const BookmarkList = ({ selectIndex, setSelectIndex }) => {
                     ? selectIndex === index
                         ? "focused"
                         : "blurred"
-                    : ""}`, ref: selectIndex === index ? selectedRef : null, onClick: () => handleBookmarkClick(index), children: [_jsx("h3", { className: "bookmark_name", children: bookmarkList.name }), _jsx("p", { className: "bookmark_address", children: bookmarkList.address }), _jsx("p", { className: "bookmark_phone", children: bookmarkList.phone }), selectIndex === index && (_jsx("div", { ref: tabRef, className: `bookmark_tab_action ${tabDirection === "up" ? "above" : "below"}`, children: _jsx(BookmarkTab, { bookmarkHospital: bookmarkList }) }))] }, index)))] }));
+                    : ""}`, ref: selectIndex === index ? selectedRef : null, onClick: () => handleBookmarkClick(index), children: [_jsx("h3", { className: "bookmark_name", children: bookmarkList.name }), _jsx("p", { className: "bookmark_address", children: bookmarkList.address }), _jsx("p", { className: "bookmark_phone", children: bookmarkList.phone }), selectIndex === index && (_jsx("div", { ref: tabRef, className: `bookmark_tab_action ${tabDirection === "up" ? "above" : "below"}`, children: _jsx(BookmarkTab, { bookmarkHospital: {
+                                ...bookmarkList,
+                                departments: bookmarkList.departments || "",
+                            } }) }))] }, index)))] }));
 };
 export default BookmarkList;

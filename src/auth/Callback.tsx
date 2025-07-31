@@ -14,7 +14,7 @@ const Callback = () => {
     const error = url.searchParams.get("error");
 
     if (error) {
-      const errorMessages = {
+      const errorMessages: Record<string, string> = {
         provider_conflict: "이미 다른 플랫폼으로 가입된 이메일입니다.",
       };
       alert(errorMessages[error] || "알 수 없는 오류가 발생했습니다.");

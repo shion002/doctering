@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Hospital } from "../type/Hospital";
 import "./BookmarkTab.css";
 import { baseURL } from "../util/baseUrl";
 

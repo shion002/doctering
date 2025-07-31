@@ -6,7 +6,7 @@
     "allowJs": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
-    "moduleResolution": "node"
+    "moduleResolution": "Bundler"
   },
   "include": ["src"]
 }

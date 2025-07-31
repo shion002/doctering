@@ -13,7 +13,7 @@ const KakaoMap = ({ center, hospitals }: KakaoMapProps) => {
     if (!center) return;
     // 스크립트가 이미 로드되어 있으면 바로 resolve
     const loadKakaoMapScript = () => {
-      return new Promise((resolve, reject) => {
+      return new Promise<void>((resolve, reject) => {
         if (window.kakao && window.kakao.maps) {
           resolve();
           return;
