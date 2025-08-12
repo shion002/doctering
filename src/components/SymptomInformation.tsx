@@ -86,7 +86,7 @@ const SymptomInformation = ({
 
     axios
       .post(
-        `https://${baseURL}/api/bookmark/check`,
+        `${baseURL}/api/bookmark/check`,
         {
           hospitalId: hospital.id,
         },

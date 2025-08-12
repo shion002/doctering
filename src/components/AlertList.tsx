@@ -27,7 +27,7 @@ const AlertList = () => {
     if (!token) return;
 
     axios
-      .get(`https://${baseURL}/api/alert/list`, {
+      .get(`${baseURL}/api/alert/list`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

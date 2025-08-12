@@ -27,7 +27,7 @@ const BookmarkList = ({ selectIndex, setSelectIndex }: BookmarkListProps) => {
 
   useEffect(() => {
     axios
-      .get(`https://${baseURL}/api/bookmark/list`, {
+      .get(`${baseURL}/api/bookmark/list`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

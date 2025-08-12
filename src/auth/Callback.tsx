@@ -42,7 +42,7 @@ const Callback = () => {
 
           axios
             .post(
-              `https://${baseURL}/api/bookmark/check`,
+              `${baseURL}/api/bookmark/check`,
               {
                 hospitalId: hospitalId,
               },

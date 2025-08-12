@@ -5,11 +5,11 @@ import "./LoginSelect.css";
 
 const LoginSelect = () => {
   const handleKakaoLogin = () => {
-    window.location.href = `http://${baseURL}/oauth2/authorization/kakao`;
+    window.location.href = `https://${baseURL}/oauth2/authorization/kakao`;
   };
 
   const handleNaverLogin = () => {
-    window.location.href = `http://${baseURL}/oauth2/authorization/naver`;
+    window.location.href = `https://${baseURL}/oauth2/authorization/naver`;
   };
 
   return (

@@ -25,7 +25,7 @@ const InfoMain = () => {
 
   useEffect(() => {
     axios
-      .get(`https://${baseURL}/api/oauth/member`, {
+      .get(`${baseURL}/api/oauth/member`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         withCredentials: true,
       })

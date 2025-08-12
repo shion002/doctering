@@ -76,7 +76,7 @@ const Step4SymptomResult = () => {
         : {};
 
       axios
-        .get(`https://${baseURL}/api/hospitals/recommend`, {
+        .get(`${baseURL}/api/hospitals/recommend`, {
           params: {
             lat: userLocation[0],
             lng: userLocation[1],

@@ -19,7 +19,7 @@ const bookmarkCancel = (hospitalId: number) => {
   if (con) {
     axios
       .post(
-        `https://${baseURL}/api/bookmark/delete`,
+        `${baseURL}/api/bookmark/delete`,
         {
           hospitalId: hospitalId,
         },
