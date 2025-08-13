@@ -64,7 +64,7 @@ const Step4SymptomResult = () => {
         console.error("위치 정보를 가져오지 못했습니다:", err);
       }
     );
-  }, [result]);
+  }, []);
 
   const token = localStorage.getItem("token");
 
@@ -95,7 +95,7 @@ const Step4SymptomResult = () => {
           setHospitals([]);
         });
     }
-  }, [userLocation, result]);
+  }, [userLocation, result?.department?.[0]]);
 
   return (
     <div>
