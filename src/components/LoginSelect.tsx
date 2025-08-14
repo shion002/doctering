@@ -1,15 +1,15 @@
-import { baseURL } from "../util/baseUrl";
+import { apiURL } from "../util/baseUrl";
 import kakao from "./../assets/kakao_login.png";
 import naver from "./../assets/naver_login.png";
 import "./LoginSelect.css";
 
 const LoginSelect = () => {
   const handleKakaoLogin = () => {
-    window.location.href = `https://${baseURL}/oauth2/authorization/kakao`;
+    window.location.href = `${apiURL}/oauth2/authorization/kakao`;
   };
 
   const handleNaverLogin = () => {
-    window.location.href = `https://${baseURL}/oauth2/authorization/naver`;
+    window.location.href = `${apiURL}/oauth2/authorization/naver`;
   };
 
   return (
