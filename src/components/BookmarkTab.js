@@ -7,7 +7,7 @@ const bookmarkCancel = (hospitalId) => {
     const con = confirm("삭제하시겠습니까?");
     if (con) {
         axios
-            .post(`https://${baseURL}/api/bookmark/delete`, {
+            .post(`${baseURL}/api/bookmark/delete`, {
             hospitalId: hospitalId,
         }, {
             headers: {

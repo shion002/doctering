@@ -56,7 +56,7 @@ const SymptomInformation = ({ disease, measures, serverity, department = [], hos
             return;
         }
         axios
-            .post(`https://${baseURL}/api/bookmark/check`, {
+            .post(`${baseURL}/api/bookmark/check`, {
             hospitalId: hospital.id,
         }, {
             headers: {

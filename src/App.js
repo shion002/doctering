@@ -18,7 +18,7 @@ function App() {
         if (!token)
             return;
         axios
-            .get(`http://${baseURL}/api/oauth/validate`, {
+            .get(`${baseURL}/api/oauth/validate`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

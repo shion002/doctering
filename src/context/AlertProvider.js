@@ -12,7 +12,7 @@ export const AlertProvider = ({ children }) => {
             return;
         }
         axios
-            .get(`https://${baseURL}/api/alert/unread`, {
+            .get(`${baseURL}/api/alert/unread`, {
             headers: { Authorization: `Bearer ${token}` },
             withCredentials: true,
         })

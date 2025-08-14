@@ -12,7 +12,7 @@ const BookmarkList = ({ selectIndex, setSelectIndex }) => {
     const selectedRef = useRef(null);
     useEffect(() => {
         axios
-            .get(`https://${baseURL}/api/bookmark/list`, {
+            .get(`${baseURL}/api/bookmark/list`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

@@ -35,7 +35,7 @@ const Callback = () => {
                     const category = action.category;
                     const categoryHistory = action.categoryHistory;
                     axios
-                        .post(`https://${baseURL}/api/bookmark/check`, {
+                        .post(`${baseURL}/api/bookmark/check`, {
                         hospitalId: hospitalId,
                     }, {
                         headers: {

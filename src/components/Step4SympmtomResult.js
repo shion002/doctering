@@ -1,4 +1,7 @@
 import { jsx as _jsx, Fragment as _Fragment } from "react/jsx-runtime";
+// 1단계: userLocation 의존성 문제 해결
+// [userLocation, result?.department?.[0]] 에서
+// userLocation 배열이 매번 새로 생성되는 문제
 import { useEffect, useState } from "react";
 import { useCategoryContext } from "../context/useCategoryContext";
 import { CategoryMap } from "../util/CategoryMap";
@@ -43,16 +46,17 @@ const Step4SymptomResult = () => {
         }, (err) => {
             console.error("위치 정보를 가져오지 못했습니다:", err);
         });
-    }, [result]);
+    }, []);
     const token = localStorage.getItem("token");
-    // 병원 추천 요청
+    // 🔥 해결책: 위도, 경도, 진료과를 개별 값으로 의존성에 사용
     useEffect(() => {
         if (userLocation && result?.department && result.department.length > 0) {
             const headers = token
                 ? { Authorization: `Bearer ${token}`, withCredentials: true }
                 : {};
+            console.log("병원 추천 요청 시작"); // 로그로 호출 횟수 확인
             axios
-                .get(`https://${baseURL}/api/hospitals/recommend`, {
+                .get(`${baseURL}/api/hospitals/recommend`, {
                 params: {
                     lat: userLocation[0],
                     lng: userLocation[1],
@@ -63,7 +67,7 @@ const Step4SymptomResult = () => {
                 headers,
             })
                 .then((res) => {
-                console.log("서버 응답:", res.data); // 배열인지 확인
+                console.log("서버 응답:", res.data);
                 setHospitals(Array.isArray(res.data) ? res.data : []);
             })
                 .catch((err) => {
@@ -71,7 +75,12 @@ const Step4SymptomResult = () => {
                 setHospitals([]);
             });
         }
-    }, [userLocation, result]);
+    }, [
+        userLocation?.[0], // 위도만
+        userLocation?.[1], // 경도만
+        result?.department?.[0], // 첫 번째 진료과만
+        // token 제거 (localStorage는 컴포넌트 생명주기 동안 변하지 않음)
+    ]);
     return (_jsx("div", { children: result && (_jsx(_Fragment, { children: _jsx(SymptomInformation, { disease: result.disease, measures: result.measures, department: result.department, serverity: result.serverity, hospitals: hospitals, userLocation: userLocation }) })) }));
 };
 export default Step4SymptomResult;
