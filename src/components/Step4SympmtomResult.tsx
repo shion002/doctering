@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useCategoryContext } from "../context/useCategoryContext";
 import { CategoryMap } from "../util/CategoryMap";
 import SymptomInformation from "./SymptomInformation";
@@ -21,8 +21,8 @@ const Step4SymptomResult = () => {
   );
   const [hospitals, setHospitals] = useState<Hospital[]>([]);
 
-  // 타입 안전하게 result 가져오기
-  const getSymptomResult = (): SymptomResultItem | undefined => {
+  // useMemo를 사용하여 result를 메모이제이션
+  const result = useMemo((): SymptomResultItem | undefined => {
     if (!selectedSymptom) return undefined;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -37,7 +37,6 @@ const Step4SymptomResult = () => {
 
     const rawResult = symptomData[0];
 
-    // 타입을 맞춰서 반환
     return {
       disease: Array.isArray(rawResult.disease) ? [...rawResult.disease] : [],
       measures: Array.isArray(rawResult.measures)
@@ -49,9 +48,7 @@ const Step4SymptomResult = () => {
       serverity: rawResult.serverity ? String(rawResult.serverity) : undefined,
       recommendVisit: Boolean(rawResult.recommendVisit),
     };
-  };
-
-  const result = getSymptomResult();
+  }, [selectedSymptom]);
 
   // 위치 받아오기
   useEffect(() => {
@@ -95,7 +92,12 @@ const Step4SymptomResult = () => {
           setHospitals([]);
         });
     }
-  }, [userLocation, result?.department?.[0]]);
+  }, [
+    userLocation?.[0], // 위도
+    userLocation?.[1], // 경도
+    result?.department?.[0], // 첫 번째 진료과
+    token,
+  ]);
 
   return (
     <div>
