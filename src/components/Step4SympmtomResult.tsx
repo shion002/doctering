@@ -16,9 +16,10 @@ interface SymptomResultItem {
 
 const Step4SymptomResult = () => {
   const { category: selectedSymptom } = useCategoryContext();
-  const [userLocation, setUserLocation] = useState<[number, number] | null>(
-    null
-  );
+  const [userLocation, setUserLocation] = useState<{
+    lat: number;
+    lng: number;
+  } | null>(null);
   const [hospitals, setHospitals] = useState<Hospital[]>([]);
 
   // useMemo를 사용하여 result를 메모이제이션 - 스프레드 연산자 제거
@@ -54,7 +55,7 @@ const Step4SymptomResult = () => {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude } = pos.coords;
-        setUserLocation([latitude, longitude]);
+        setUserLocation({ lat: latitude, lng: longitude });
       },
       (err) => {
         console.error("위치 정보를 가져오지 못했습니다:", err);
@@ -114,7 +115,9 @@ const Step4SymptomResult = () => {
             department={result.department}
             serverity={result.serverity}
             hospitals={hospitals}
-            userLocation={userLocation}
+            userLocation={
+              userLocation ? [userLocation.lat, userLocation.lng] : null
+            }
           />
         </>
       )}
