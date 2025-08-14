@@ -20,7 +20,7 @@ const KakaoMap = ({ center, hospitals }: KakaoMapProps) => {
         }
         // 스크립트 없으면 생성
         const script = document.createElement("script");
-        script.src = `dapi.kakao.com/v2/maps/sdk.js?appkey=${
+        script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${
           import.meta.env.VITE_REACT_APP_KAKAO_MAP_KEY
         }&autoload=false`;
         script.async = true;
