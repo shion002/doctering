@@ -1,4 +1,8 @@
-import { useEffect, useState, useMemo } from "react";
+// 1단계: userLocation 의존성 문제 해결
+// [userLocation, result?.department?.[0]] 에서
+// userLocation 배열이 매번 새로 생성되는 문제
+
+import { useEffect, useState } from "react";
 import { useCategoryContext } from "../context/useCategoryContext";
 import { CategoryMap } from "../util/CategoryMap";
 import SymptomInformation from "./SymptomInformation";
@@ -16,14 +20,13 @@ interface SymptomResultItem {
 
 const Step4SymptomResult = () => {
   const { category: selectedSymptom } = useCategoryContext();
-  const [userLocation, setUserLocation] = useState<{
-    lat: number;
-    lng: number;
-  } | null>(null);
+  const [userLocation, setUserLocation] = useState<[number, number] | null>(
+    null
+  );
   const [hospitals, setHospitals] = useState<Hospital[]>([]);
 
-  // useMemo를 사용하여 result를 메모이제이션 - 스프레드 연산자 제거
-  const result = useMemo((): SymptomResultItem | undefined => {
+  // 타입 안전하게 result 가져오기
+  const getSymptomResult = (): SymptomResultItem | undefined => {
     if (!selectedSymptom) return undefined;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -38,24 +41,28 @@ const Step4SymptomResult = () => {
 
     const rawResult = symptomData[0];
 
-    // 스프레드 연산자 없이 직접 참조하여 참조 안정성 확보
+    // 타입을 맞춰서 반환
     return {
-      disease: Array.isArray(rawResult.disease) ? rawResult.disease : [],
-      measures: Array.isArray(rawResult.measures) ? rawResult.measures : [],
+      disease: Array.isArray(rawResult.disease) ? [...rawResult.disease] : [],
+      measures: Array.isArray(rawResult.measures)
+        ? [...rawResult.measures]
+        : [],
       department: Array.isArray(rawResult.department)
-        ? rawResult.department
+        ? [...rawResult.department]
         : undefined,
       serverity: rawResult.serverity ? String(rawResult.serverity) : undefined,
       recommendVisit: Boolean(rawResult.recommendVisit),
     };
-  }, [selectedSymptom]); // selectedSymptom이 변경될 때만 재계산
+  };
+
+  const result = getSymptomResult();
 
   // 위치 받아오기
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude } = pos.coords;
-        setUserLocation({ lat: latitude, lng: longitude });
+        setUserLocation([latitude, longitude]);
       },
       (err) => {
         console.error("위치 정보를 가져오지 못했습니다:", err);
@@ -63,32 +70,23 @@ const Step4SymptomResult = () => {
     );
   }, []);
 
-  // 첫 번째 진료과명을 별도로 메모이제이션
-  const firstDepartment = useMemo(() => {
-    return result?.department?.[0] || null;
-  }, [result?.department]);
-
   const token = localStorage.getItem("token");
 
-  // 병원 추천 요청 - 더 안정적인 의존성 관리
+  // 🔥 해결책: 위도, 경도, 진료과를 개별 값으로 의존성에 사용
   useEffect(() => {
-    if (userLocation && firstDepartment) {
+    if (userLocation && result?.department && result.department.length > 0) {
       const headers = token
         ? { Authorization: `Bearer ${token}`, withCredentials: true }
         : {};
 
-      console.log("병원 추천 요청 시작:", {
-        lat: userLocation[0],
-        lng: userLocation[1],
-        department: firstDepartment,
-      });
+      console.log("병원 추천 요청 시작"); // 로그로 호출 횟수 확인
 
       axios
         .get(`${baseURL}/api/hospitals/recommend`, {
           params: {
             lat: userLocation[0],
             lng: userLocation[1],
-            department: firstDepartment,
+            department: result.department[0],
             radius: 3,
             limit: 5,
           },
@@ -103,7 +101,12 @@ const Step4SymptomResult = () => {
           setHospitals([]);
         });
     }
-  }, [userLocation, firstDepartment]); // token 의존성 제거하고 더 간단하게
+  }, [
+    userLocation?.[0], // 위도만
+    userLocation?.[1], // 경도만
+    result?.department?.[0], // 첫 번째 진료과만
+    // token 제거 (localStorage는 컴포넌트 생명주기 동안 변하지 않음)
+  ]);
 
   return (
     <div>
@@ -115,9 +118,7 @@ const Step4SymptomResult = () => {
             department={result.department}
             serverity={result.serverity}
             hospitals={hospitals}
-            userLocation={
-              userLocation ? [userLocation.lat, userLocation.lng] : null
-            }
+            userLocation={userLocation}
           />
         </>
       )}
