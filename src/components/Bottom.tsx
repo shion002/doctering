@@ -8,6 +8,8 @@ import inforBtn from "./../assets/infor_button.jpg";
 import { useLocation, useNavigate } from "react-router-dom";
 import useLoginSelect from "../context/useLoginSelect";
 import { useAlertContext } from "../context/useAlertContext";
+import { useContext } from "react";
+import { CategoryContext } from "../context/CategoryContext"; // CategoryContext import 추가
 
 const Bottom = () => {
   const [active, setActive] = useState("홈");
@@ -15,6 +17,7 @@ const Bottom = () => {
   const location = useLocation();
   const { open: openLoginSelect } = useLoginSelect();
   const { readAlert } = useAlertContext();
+  const categoryContext = useContext(CategoryContext); // CategoryContext 사용
 
   interface BottomButton {
     name: string;
@@ -38,12 +41,27 @@ const Bottom = () => {
     } else {
       setActive("홈");
     }
-
-    console.log(readAlert);
   }, [location.pathname]);
 
   const handleClick = (btn: BottomButton) => {
     const token = localStorage.getItem("token");
+
+    // 홈 버튼을 눌렀을 때 step1로 초기화
+    if (btn.name === "홈") {
+      // CategoryContext가 있다면 초기화 실행
+      if (categoryContext?.handleCategoryReset) {
+        categoryContext.handleCategoryReset();
+      } else {
+        // CategoryContext가 없어도 URL 해시로 초기화
+        window.history.replaceState(null, "", "#step1");
+      }
+
+      // 홈페이지 이동 전에 약간의 딜레이 (초기화가 완료되도록)
+      setTimeout(() => {
+        nav(btn.path);
+      }, 50);
+      return;
+    }
 
     if (
       !token &&

@@ -687,476 +687,685 @@ export const CategoryMap = {
     ],
     [SymptomCategory.COUGH]: [
       {
-        disease: ["감기", "기관지염", "폐렴", "천식"],
-        measures: [
-          "따뜻한 물 자주 마시기",
-          "실내 습도 유지",
-          "자극적인 음식 피하기",
-        ],
+        disease: ["급성 기관지염", "폐렴", "천식"],
+        measures: ["수분 섭취", "가습기 사용", "휴식"],
+        department: ["내과", "호흡기내과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
     [SymptomCategory.PHLEGM]: [
       {
-        disease: ["급성 기관지염", "만성 폐쇄성 폐질환(COPD)", "폐렴"],
-        measures: [
-          "수분 충분히 섭취",
-          "가래 배출을 돕는 자세(고개 약간 숙이고 기침)",
-        ],
+        disease: ["기관지염", "폐렴", "만성 폐쇄성 폐질환(COPD)"],
+        measures: ["수분 섭취", "따뜻한 차 마시기", "가벼운 기침으로 배출"],
+        department: ["내과", "호흡기내과"],
+        serverity: "중간",
+        recommendVisit: true,
+      },
+    ],
+    [SymptomCategory.BREATHLESSNESS]: [
+      {
+        disease: ["천식", "폐렴", "심부전"],
+        measures: ["안정을 취하기", "호흡을 가다듬기", "심한 경우 119 연락"],
+        department: ["내과", "호흡기내과", "심장내과"],
+        serverity: "높음",
+        recommendVisit: true,
       },
     ],
     [SymptomCategory.WHEEZING]: [
       {
-        disease: ["천식", "기관지염", "알레르기 반응"],
+        disease: ["천식", "기관지 협착", "알레르기 반응"],
         measures: [
-          "자극 제거",
-          "손쉬운 호흡 자세 유지",
-          "이전 흡입기 있으면 사용",
+          "진정 상태 유지",
+          "알레르기 유발 요인 회피",
+          "필요 시 흡입제 사용",
         ],
+        department: ["호흡기내과", "알레르기내과"],
+        serverity: "높음",
+        recommendVisit: true,
       },
     ],
     [SymptomCategory.ITCHY_THROAT]: [
       {
-        disease: ["인후염", "알레르기성 비염", "감기 초기"],
-        measures: ["미지근한 물 자주 마시기", "말 줄이기", "실내 공기 정화"],
+        disease: ["알레르기성 비염", "인후염", "급성 상기도 감염"],
+        measures: ["수분 섭취", "가습기 사용", "목캔디나 꿀차 섭취"],
+        department: ["이비인후과", "내과"],
+        serverity: "낮음",
+        recommendVisit: false,
       },
     ],
     [SymptomCategory.ABDOMINAL_PAIN]: [
       {
-        disease: ["급성 위염", "장염", "소화성 궤양", "맹장염"],
-        measures: ["금식 후 물 섭취", "복부 찜질", "통증 지속 시 병원 방문"],
+        disease: ["소화불량", "위염", "과민성 대장 증후군"],
+        measures: ["소화 잘되는 음식 섭취", "휴식", "수분 섭취"],
+        department: ["내과", "소화기내과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.BLOATING]: [
       {
-        disease: ["소화불량", "기능성 소화 장애", "위장 운동 저하"],
-        measures: ["가볍게 걷기", "따뜻한 차 섭취(생강차 등)", "과식 피하기"],
+        disease: ["소화불량", "위장관 가스", "과민성 대장 증후군"],
+        measures: ["탄산음료 피하기", "가벼운 산책", "소량씩 자주 식사"],
+        department: ["내과", "소화기내과"],
+        serverity: "경미",
+        recommendVisit: false,
       },
     ],
+
     [SymptomCategory.HEARTBURN]: [
       {
-        disease: ["위식도 역류 질환(GERD)", "위염", "소화성 궤양"],
-        measures: ["누운 자세 피하기", "자극적인 음식 피하기", "제산제 복용"],
+        disease: ["역류성 식도염", "위염"],
+        measures: [
+          "자극적인 음식 피하기",
+          "식후 바로 눕지 않기",
+          "제산제 복용",
+        ],
+        department: ["내과", "소화기내과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.ABDOMINAL_DISTENSION]: [
       {
-        disease: ["과민성 대장증후군", "장내 가스", "변비"],
-        measures: ["따뜻한 물 마시기", "복부 마사지", "가벼운 운동"],
+        disease: ["장내 가스", "소화불량", "변비"],
+        measures: ["수분 섭취", "식이섬유 섭취", "가벼운 운동"],
+        department: ["내과", "소화기내과"],
+        serverity: "경미",
+        recommendVisit: false,
       },
     ],
+
     [SymptomCategory.DIARRHEA_PAIN]: [
       {
-        disease: ["급성 장염", "식중독", "바이러스 감염"],
-        measures: ["탈수 방지를 위해 수분/전해질 보충", "자극적인 음식 금지"],
+        disease: ["장염", "세균성 설사", "과민성 대장 증후군"],
+        measures: ["수분·전해질 보충", "기름진 음식 피하기", "휴식"],
+        department: ["내과", "소화기내과"],
+        serverity: "심각",
+        recommendVisit: true,
       },
     ],
     [SymptomCategory.INDIGESTION]: [
       {
-        disease: ["위장 장애", "위 마비", "기능성 소화불량"],
-        measures: ["소량씩 자주 식사", "식후 바로 눕지 않기", "가벼운 산책"],
+        disease: ["소화불량", "위염"],
+        measures: ["소량씩 자주 식사", "기름진 음식 피하기", "소화제 복용"],
+        department: ["내과", "소화기내과"],
+        serverity: "경증",
+        recommendVisit: false,
       },
     ],
+
     [SymptomCategory.POSTMEAL_DISCOMFORT]: [
       {
-        disease: ["위염", "담낭 질환", "위식도 역류"],
-        measures: ["기름진 음식 줄이기", "식사량 조절", "소화제 복용 고려"],
+        disease: ["기능성 소화불량", "위염"],
+        measures: ["과식 피하기", "카페인·알코올 제한", "소화제 복용"],
+        department: ["내과", "소화기내과"],
+        serverity: "경증",
+        recommendVisit: false,
       },
     ],
+
     [SymptomCategory.FREQUENT_BELCHING]: [
       {
-        disease: ["기능성 소화불량", "공기 삼킴증", "위산과다"],
-        measures: ["가스가 많이 나오는 음식 피하기(탄산음료 등)"],
+        disease: ["기능성 소화불량", "위식도역류질환(GERD)"],
+        measures: ["탄산음료 피하기", "천천히 식사하기", "식후 눕지 않기"],
+        department: ["내과", "소화기내과"],
+        serverity: "경증",
+        recommendVisit: false,
       },
     ],
+
     [SymptomCategory.NAUSEA]: [
       {
-        disease: ["위염", "임신 초기", "간 질환"],
-        measures: ["생강차 섭취", "기름진 음식 피하기", "증상 지속 시 진료"],
+        disease: ["위염", "위식도역류질환(GERD)", "소화불량"],
+        measures: ["자극적인 음식 피하기", "소량씩 자주 식사", "진토제 복용"],
+        department: ["내과", "소화기내과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.LOSS_OF_APPETITE]: [
       {
-        disease: ["감기", "소화기 질환", "간 기능 이상", "우울증"],
-        measures: ["수분 섭취 유지", "가벼운 유동식 섭취", "장기화되면 진료"],
+        disease: ["위염", "소화불량", "간질환", "우울증"],
+        measures: ["소량씩 균형 잡힌 식사", "충분한 수면", "스트레스 관리"],
+        department: ["내과", "소화기내과", "정신건강의학과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
     [SymptomCategory.CONSTIPATION]: [
       {
-        disease: ["기능성 변비", "과민성 대장증후군", "대장 운동 저하"],
-        measures: ["수분·섬유질 섭취 증가", "규칙적인 배변 습관 들이기"],
+        disease: ["기능성 변비", "과민성 대장 증후군", "대장암 초기"],
+        measures: ["수분 섭취 증가", "식이섬유 섭취", "규칙적인 운동"],
+        department: ["내과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.DIARRHEA]: [
       {
-        disease: ["급성 장염", "식중독", "크론병"],
-        measures: [
-          "수분 보충",
-          "금식 또는 부드러운 식사",
-          "지사제 복용은 신중히",
-        ],
+        disease: ["급성 장염", "식중독", "과민성 대장 증후군"],
+        measures: ["수분 보충", "전해질 보충", "자극적인 음식 피하기"],
+        department: ["내과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.PAINFUL_DEFECATION]: [
       {
-        disease: ["치질", "항문 열상", "직장염"],
-        measures: [
-          "좌욕",
-          "변을 부드럽게 만드는 식단 유지",
-          "자극적인 음식 피하기",
-        ],
+        disease: ["치질", "항문열상", "직장염"],
+        measures: ["온수 좌욕", "변비 예방 식단", "진통제 사용"],
+        department: ["외과", "항문외과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.BLOODY_STOOL]: [
       {
-        disease: ["치질", "대장폴립", "궤양성 대장염"],
-        measures: [
-          "혈변 지속 시 병원 방문",
-          "섬유질 섭취 늘리기",
-          "과도한 힘주기 피하기",
-        ],
+        disease: ["치질", "대장 용종", "대장암"],
+        measures: ["즉시 병원 방문", "출혈량 확인", "섬유소 섭취"],
+        department: ["내과", "외과"],
+        serverity: "심각",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.INCOMPLETE_DEFECATION]: [
       {
-        disease: ["과민성 대장증후군", "직장출구 폐쇄증"],
-        measures: ["배변 시간 충분히 확보", "식이 섬유 섭취 늘리기"],
+        disease: ["과민성 대장 증후군", "직장탈", "대장 운동 저하"],
+        measures: ["식이섬유 섭취", "수분 보충", "규칙적인 배변 습관"],
+        department: ["내과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
     [SymptomCategory.BACK_PAIN]: [
       {
-        disease: ["요추염좌", "추간판 탈출증", "근육통"],
-        measures: ["잠시 안정", "허리 스트레칭", "온찜질"],
+        disease: ["요추 염좌", "퇴행성 요추 질환", "근막통증증후군"],
+        measures: ["안정 및 휴식", "온찜질", "진통제 복용"],
+        department: ["재활의학과", "정형외과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.STIFF_BACK]: [
       {
-        disease: ["강직성 척추염", "근육 긴장", "디스크 초기 증상"],
-        measures: ["가벼운 운동", "자세 교정", "증상 지속 시 영상 검사 필요"],
+        disease: ["근육 긴장", "척추관 협착증 초기", "퇴행성 척추질환"],
+        measures: ["스트레칭", "가벼운 운동", "온찜질"],
+        department: ["재활의학과"],
+        serverity: "경미",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.CANNOT_BEND_BACK]: [
       {
-        disease: ["요추염좌", "척추관 협착증"],
-        measures: ["무거운 물건 피하기", "찜질 요법", "자세 주의"],
+        disease: ["요추 추간판 탈출증(디스크)", "요추염좌", "척추관 협착증"],
+        measures: ["과도한 움직임 피하기", "휴식", "통증 심하면 진료 필요"],
+        department: ["정형외과", "재활의학과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.LEG_RADIATING_PAIN]: [
       {
-        disease: ["좌골신경통", "디스크"],
-        measures: ["무리한 움직임 제한", "누워서 다리 높이기", "냉찜질"],
+        disease: ["요추 추간판 탈출증(디스크)", "좌골신경통"],
+        measures: ["무거운 물건 피하기", "진통제 사용", "휴식"],
+        department: ["신경외과", "정형외과"],
+        serverity: "심각",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.SHARP_BACK_PAIN]: [
       {
-        disease: ["척추 신경 눌림", "디스크"],
-        measures: ["갑작스러운 움직임 피하기", "통증 부위 압박 피하기"],
+        disease: ["요추 디스크", "척추 압박 골절", "급성 요추염좌"],
+        measures: ["즉시 안정", "통증 조절", "심하면 응급실 방문"],
+        department: ["정형외과", "신경외과"],
+        serverity: "심각",
+        recommendVisit: true,
       },
     ],
     [SymptomCategory.NUMB_LEGS]: [
       {
-        disease: ["좌골신경통", "허리디스크", "당뇨병성 신경병증"],
-        measures: [
-          "누워서 다리 올리기",
-          "무리한 활동 중단",
-          "통증 지속 시 신경과 진료",
-        ],
+        disease: ["좌골신경통", "말초신경 손상", "요추 디스크"],
+        measures: ["휴식 및 자세 조절", "스트레칭", "증상 지속 시 진료"],
+        department: ["정형외과", "신경외과", "재활의학과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.WEAK_LEGS]: [
       {
-        disease: ["신경근병증", "뇌졸중", "근육 위축"],
-        measures: [
-          "안정 취하기",
-          "넘어지지 않도록 주의",
-          "증상 심하면 응급실 방문",
-        ],
+        disease: ["근위약", "신경근 질환", "요추 디스크"],
+        measures: ["가벼운 운동", "근력 강화", "증상 반복 시 진료"],
+        department: ["재활의학과", "정형외과", "신경외과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.KNEE_PAIN]: [
       {
-        disease: ["관절염", "반월상연골 손상", "활액막염"],
-        measures: ["냉찜질", "휴식", "무릎 보호대 착용"],
+        disease: ["퇴행성 무릎관절염", "슬관절 염좌", "반월상연골 손상"],
+        measures: ["휴식", "온찜질", "진통제 복용"],
+        department: ["정형외과", "재활의학과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.CALF_SWELLING_PAIN]: [
       {
-        disease: ["하지정맥류", "혈전증(DVT)", "근육 염좌"],
-        measures: ["다리 높이기", "압박스타킹 착용", "심한 경우 내과 진료"],
+        disease: ["심부정맥 혈전증(DVT)", "근육염좌", "혈액순환 문제"],
+        measures: ["다리 올리기", "냉찜질", "심하면 즉시 진료"],
+        department: ["내과", "정형외과", "재활의학과"],
+        serverity: "심각",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.HEAVY_LEGS]: [
       {
-        disease: ["심부정맥 혈전증", "심부전", "신장 문제"],
-        measures: [
-          "수분 섭취 조절",
-          "다리 올려놓고 휴식",
-          "붓기 지속 시 검사 필요",
-        ],
+        disease: ["정맥류", "부종", "혈액순환 저하"],
+        measures: ["다리 올리기", "압박 스타킹 착용", "가벼운 운동"],
+        department: ["내과", "재활의학과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
     [SymptomCategory.NUMB_HANDS]: [
       {
-        disease: ["손목터널증후군", "경추 디스크", "말초신경염"],
-        measures: ["손목 쉬게 하기", "스트레칭", "자극 피하기"],
+        disease: ["수근관 증후군", "말초신경 손상", "경추 디스크"],
+        measures: ["손목 스트레칭", "휴식", "증상 지속 시 진료"],
+        department: ["재활의학과", "정형외과", "신경과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.WRIST_PAIN]: [
       {
-        disease: ["건초염", "관절염", "손목 염좌"],
-        measures: ["냉찜질", "손목 보호대 사용", "반복 동작 자제"],
+        disease: ["손목 염좌", "건초염", "수근관 증후군"],
+        measures: ["휴식", "온찜질", "보조기 착용"],
+        department: ["재활의학과", "정형외과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.STIFF_FINGERS]: [
       {
-        disease: ["류마티스 관절염", "방아쇠 수지", "디지털 건염"],
-        measures: [
-          "따뜻한 찜질",
-          "손가락 스트레칭",
-          "증상 심하면 정형외과 진료",
-        ],
+        disease: ["손가락 관절염", "강직성 건초염", "류마티스 관절염 초기"],
+        measures: ["스트레칭", "손가락 운동", "온찜질"],
+        department: ["재활의학과", "정형외과", "류마티스내과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.WEAK_HANDS]: [
       {
-        disease: ["말초신경 병변", "근육 약화", "중추신경계 문제"],
-        measures: ["무거운 물건 들지 않기", "손 사용 줄이기"],
+        disease: ["근위약", "말초신경 손상", "수근관 증후군"],
+        measures: ["가벼운 근력 운동", "휴식", "증상 지속 시 진료"],
+        department: ["재활의학과", "정형외과", "신경과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.SWOLLEN_HANDS]: [
       {
-        disease: ["감염성 관절염", "류마티스 질환", "알레르기 반응"],
-        measures: ["냉찜질", "손 높게 들기", "증상 지속 시 진료"],
+        disease: ["손 관절염", "염증성 질환", "순환 문제"],
+        measures: ["냉찜질", "손 올리기", "증상 지속 시 진료"],
+        department: ["재활의학과", "정형외과", "내과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
     [SymptomCategory.NUMB_FEET]: [
       {
-        disease: ["당뇨병성 말초신경병증", "추간판 탈출증", "혈액순환 장애"],
-        measures: ["발 마사지", "발을 따뜻하게 하기", "운동 후 휴식"],
+        disease: ["말초신경 손상", "당뇨병성 신경병증", "좌골신경통"],
+        measures: ["발 스트레칭", "휴식", "증상 지속 시 진료"],
+        department: ["재활의학과", "신경과", "정형외과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.ANKLE_PAIN]: [
       {
-        disease: ["염좌", "인대 손상", "관절염"],
-        measures: ["냉찜질", "압박붕대", "안정을 취하기"],
+        disease: ["발목 염좌", "관절염", "힘줄염"],
+        measures: ["휴식", "냉/온찜질", "보조기 착용"],
+        department: ["재활의학과", "정형외과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.FOOT_PAIN]: [
       {
-        disease: ["족저근막염", "피로 골절", "무지외반증"],
-        measures: ["푹신한 신발 착용", "발 마사지", "과도한 활동 자제"],
+        disease: ["족저근막염", "발바닥 근육 염증", "관절염"],
+        measures: ["스트레칭", "온찜질", "증상 지속 시 진료"],
+        department: ["재활의학과", "정형외과", "내과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.SWOLLEN_FEET]: [
       {
-        disease: ["염좌", "통풍", "감염"],
-        measures: ["냉찜질", "다리 높이기", "소염진통제 복용 고려"],
+        disease: ["순환 문제", "염증성 질환", "심부정맥 혈전증"],
+        measures: ["발 올리기", "냉찜질", "증상 지속 시 진료"],
+        department: ["재활의학과", "내과", "정형외과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.NUMBNESS_FEET]: [
       {
-        disease: ["말초신경병증", "혈액순환 장애", "요추 신경병증"],
-        measures: ["발 자극 피하고 보호", "당뇨 환자는 특히 주의"],
+        disease: ["말초신경 손상", "당뇨병성 신경병증", "좌골신경통"],
+        measures: ["발 스트레칭", "휴식", "증상 지속 시 진료"],
+        department: ["재활의학과", "신경과", "정형외과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.ITCHY_SKIN]: [
       {
-        disease: ["아토피 피부염", "접촉성 피부염", "두드러기"],
-        measures: ["시원한 물로 씻기", "보습제 사용", "자극 피하기"],
+        disease: ["접촉성 피부염", "알레르기 반응", "건조 피부"],
+        measures: ["보습제 사용", "긁지 않기", "알레르기 유발 요인 피하기"],
+        department: ["피부과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.RASH]: [
       {
-        disease: ["알레르기성 피부염", "바이러스 감염", "열성 발진"],
-        measures: ["청결 유지", "긁지 않기", "필요시 항히스타민 복용"],
+        disease: ["두드러기", "접촉성 피부염", "약물 반응"],
+        measures: ["보습제 사용", "증상 관찰", "심한 경우 병원 방문"],
+        department: ["피부과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.DRY_SKIN]: [
       {
-        disease: ["건성 피부염", "건선", "갑상선 기능저하증"],
-        measures: ["보습제 자주 바르기", "뜨거운 물 샤워 피하기"],
+        disease: ["건조 피부", "아토피 피부염"],
+        measures: ["보습제 사용", "자극적인 화학물질 피하기"],
+        department: ["피부과"],
+        serverity: "낮음",
+        recommendVisit: false,
       },
     ],
 
     [SymptomCategory.RED_SPOTS]: [
       {
-        disease: ["알레르기 반응", "바이러스성 발진", "혈소판 감소증"],
-        measures: ["자극 피하기", "반점 번지면 피부과 방문"],
+        disease: ["발진", "알레르기 반응", "피부염"],
+        measures: ["보습제 사용", "증상 관찰", "증상 지속 시 병원 방문"],
+        department: ["피부과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.PEELING_SKIN]: [
       {
-        disease: ["무좀", "건선", "피부염"],
-        measures: ["보습제 사용", "피부 긁지 않기", "증상 지속 시 전문의 상담"],
+        disease: ["피부 건조", "손상된 피부", "각질 과다"],
+        measures: [
+          "보습제 사용",
+          "자극적인 제품 사용 금지",
+          "증상 지속 시 병원 방문",
+        ],
+        department: ["피부과"],
+        serverity: "낮음",
+        recommendVisit: false,
       },
     ],
 
     [SymptomCategory.ANXIETY]: [
       {
-        disease: ["불안장애", "공황장애", "스트레스 장애"],
-        measures: ["깊은 호흡", "명상", "충분한 수면 확보"],
+        disease: ["불안장애", "스트레스 반응"],
+        measures: [
+          "심호흡 및 이완 훈련",
+          "규칙적인 생활",
+          "스트레스 요인 관리",
+        ],
+        department: ["정신건강의학과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
+
     [SymptomCategory.PSYCHOSOMATIC_PAIN]: [
       {
-        disease: ["섬유근육통", "신경병증성 통증", "우울증", "불안장애"],
-        measures: [
-          "통증 일지를 작성하여 패턴 파악",
-          "가벼운 스트레칭과 운동 시도",
-          "심리적 스트레스 관리 (명상, 상담 등)",
-          "필요시 통증 클리닉 또는 정신건강의학과 상담",
-        ],
+        disease: ["신체화장애", "심인성 통증"],
+        measures: ["심리 상담", "규칙적인 생활", "증상 기록 및 관찰"],
+        department: ["정신건강의학과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.DEPRESSION]: [
       {
-        disease: ["우울증", "계절성 정서장애", "만성 피로"],
-        measures: [
-          "햇빛 보기",
-          "가까운 사람과 대화",
-          "일정한 수면/생활 습관 유지",
-        ],
+        disease: ["우울증", "기분장애"],
+        measures: ["심리 상담", "규칙적인 운동", "충분한 수면"],
+        department: ["정신건강의학과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.SLEEP_DISORDER]: [
       {
-        disease: ["불면증", "수면무호흡증", "불안장애"],
-        measures: ["카페인 섭취 줄이기", "일정한 수면시간 유지"],
+        disease: ["불면증", "수면장애"],
+        measures: ["수면 환경 개선", "취침 루틴 유지", "카페인 및 자극제 제한"],
+        department: ["정신건강의학과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.LOW_CONCENTRATION]: [
       {
-        disease: ["주의력 결핍장애", "불면", "우울증"],
-        measures: ["충분한 휴식", "계획적 활동", "스마트폰 사용 줄이기"],
+        disease: ["주의력 결핍", "스트레스 영향"],
+        measures: ["규칙적인 생활", "집중력 훈련", "휴식과 명상 병행"],
+        department: ["정신건강의학과", "신경과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.MEMORY_LOSS]: [
       {
-        disease: ["치매 초기", "우울증", "수면 부족"],
+        disease: ["경도인지장애", "알츠하이머병"],
         measures: [
-          "두뇌 자극 활동(퍼즐, 독서 등)",
-          "충분한 수면",
-          "병원 상담 필요",
+          "메모 습관",
+          "규칙적인 생활",
+          "전문의 상담",
+          "두뇌 훈련 게임 및 운동 병행",
+          "증상 반복될 경우 병원 방문",
         ],
+        department: ["신경과", "정신건강의학과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.FREQUENT_URINATION]: [
       {
-        disease: ["방광염", "과민성 방광", "당뇨"],
-        measures: [
-          "수분 조절",
-          "카페인 음료 줄이기",
-          "증상 지속 시 비뇨기과 방문",
-        ],
+        disease: ["요로감염", "당뇨병", "전립선 질환"],
+        measures: ["수분 섭취 증가", "배뇨 기록", "증상 지속 시 병원 방문"],
+        department: ["내과", "비뇨의학과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.PAINFUL_URINATION]: [
       {
-        disease: ["요로감염", "방광염", "요도염"],
-        measures: ["물 많이 마시기", "따뜻한 물찜질", "심할 경우 항생제 필요"],
+        disease: ["요로감염", "방광염", "전립선염"],
+        measures: ["수분 섭취", "따뜻한 찜질", "증상 지속 시 전문의 상담"],
+        department: ["내과", "비뇨의학과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.CLOUDY_URINE]: [
       {
-        disease: ["요로감염", "탈수", "신장결석"],
-        measures: [
-          "수분 섭취 늘리기",
-          "비타민 복용 확인",
-          "소변 색 지속 시 검사",
-        ],
+        disease: ["요로감염", "신장 결석"],
+        measures: ["수분 섭취", "소변 상태 관찰", "증상 지속 시 병원 방문"],
+        department: ["내과", "비뇨의학과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.URGENCY]: [
       {
-        disease: ["과민성 방광", "방광염", "전립선 문제"],
-        measures: ["화장실 위치 파악", "자극적인 음식 피하기"],
+        disease: ["과민성 방광", "요로감염", "전립선 질환"],
+        measures: ["배뇨 습관 기록", "증상 조절", "증상 지속 시 전문의 상담"],
+        department: ["내과", "비뇨의학과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.BLOODY_URINE]: [
       {
-        disease: ["방광염", "신장결석", "방광암"],
-        measures: ["즉시 비뇨기과 진료", "물 충분히 마시기"],
+        disease: ["요로결석", "요로감염", "방광암 가능성"],
+        measures: ["소변 색 관찰", "수분 섭취", "즉시 전문의 상담 권장"],
+        department: ["내과", "비뇨의학과"],
+        serverity: "높음",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.IRREGULAR_PERIOD]: [
       {
-        disease: ["다낭성난소증후군", "갑상선 이상", "스트레스"],
-        measures: ["수면/식사 패턴 조절", "체중 변화 관리"],
+        disease: ["호르몬 불균형", "배란 이상", "다낭성 난소 증후군(PCOS)"],
+        measures: [
+          "생리 주기 기록",
+          "규칙적인 생활",
+          "증상 지속 시 전문의 상담",
+        ],
+        department: ["산부인과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.MENSTRUAL_PAIN]: [
       {
-        disease: ["자궁내막증", "자궁근종", "원발성 생리통"],
-        measures: ["따뜻한 찜질", "진통제 복용 가능"],
+        disease: ["월경통", "자궁내막증", "자궁근종 가능성"],
+        measures: ["진통제 사용", "온찜질", "생활 습관 관리"],
+        department: ["산부인과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.HEAVY_DISCHARGE]: [
       {
-        disease: ["질염(칸디다, 트리코모나스)", "성병"],
-        measures: ["질 세정제 과다 사용 자제", "면 속옷 착용", "산부인과 진료"],
+        disease: ["세균성 질염", "칸디다 질염", "호르몬 이상"],
+        measures: ["질 세정 관리", "증상 관찰", "증상 지속 시 전문의 상담"],
+        department: ["산부인과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.VAGINAL_ITCH_PAIN]: [
       {
-        disease: ["질염", "성병", "피부염"],
-        measures: ["청결 유지", "자극 피하기", "전문 진료 필요"],
+        disease: ["세균성 질염", "칸디다 질염", "외음부 피부염"],
+        measures: ["청결 유지", "자극 피하기", "증상 지속 시 병원 방문"],
+        department: ["산부인과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.POSTMENOPAUSAL_BLEEDING]: [
       {
-        disease: ["자궁내막증식증", "자궁암", "호르몬 이상"],
-        measures: ["즉시 산부인과 진료 필요"],
+        disease: ["자궁내막 이상", "자궁 용종", "자궁암 가능성"],
+        measures: ["즉시 전문의 상담", "출혈 기록", "정기 검진"],
+        department: ["산부인과"],
+        serverity: "높음",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.FATIGUE]: [
       {
-        disease: ["만성 피로 증후군", "빈혈", "갑상선 기능 저하"],
-        measures: ["휴식", "규칙적 수면", "심하면 내과 진료"],
+        disease: ["만성 피로증후군", "빈혈", "갑상선 기능 저하"],
+        measures: [
+          "충분한 휴식",
+          "균형 잡힌 식사",
+          "수분 섭취",
+          "증상 지속 시 병원 방문",
+        ],
+        department: ["내과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.WEIGHT_CHANGE]: [
       {
-        disease: ["갑상선 이상", "당뇨", "암", "식이장애"],
-        measures: ["식사 기록 확인", "운동량 점검", "내분비 검사 필요"],
+        disease: ["내분비 질환", "대사 이상", "영양 불균형"],
+        measures: [
+          "체중 기록",
+          "규칙적인 식사와 운동",
+          "증상 지속 시 전문의 상담",
+        ],
+        department: ["내과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.PERSISTENT_FEVER]: [
       {
-        disease: ["감염", "폐렴", "결핵", "암"],
-        measures: ["해열제 복용", "수분 보충", "3일 이상 지속되면 내과 진료"],
+        disease: ["감염성 질환", "자가면역 질환", "내부 염증"],
+        measures: ["수분 섭취", "휴식", "체온 기록", "증상 지속 시 병원 방문"],
+        department: ["내과"],
+        serverity: "높음",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.APPETITE_LOSS]: [
       {
-        disease: ["위염", "간질환", "우울증", "암"],
-        measures: ["부드러운 음식 섭취", "휴식", "소화제 복용 고려"],
+        disease: ["소화기 질환", "내분비 이상", "정신적 스트레스"],
+        measures: ["소량씩 자주 식사", "수분 섭취", "증상 지속 시 전문의 상담"],
+        department: ["내과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
 
     [SymptomCategory.UNKNOWN_PAIN]: [
       {
-        disease: ["섬유근육통", "신경병증", "정신적 스트레스"],
-        measures: ["진통제 복용", "스트레칭", "필요시 통증 클리닉 진료"],
+        disease: ["원인 불명 통증", "신경계 이상", "내과적 질환"],
+        measures: ["증상 기록", "휴식 및 안정", "지속 시 전문의 상담"],
+        department: ["내과", "신경과"],
+        serverity: "중간",
+        recommendVisit: true,
       },
     ],
   },
