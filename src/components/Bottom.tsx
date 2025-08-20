@@ -1,10 +1,10 @@
 import "./Bottom.css";
 import { useEffect, useState } from "react";
 import BottomButton from "./BottomButton";
-import homeBtn from "./../assets/home_button.jpg";
-import starBtn from "./../assets/star_button.jpg";
-import pushBtn from "./../assets/push_button.jpg";
-import inforBtn from "./../assets/infor_button.jpg";
+import homeBtn from "./../assets/home_button_svg.svg";
+import starBtn from "./../assets/star_button_svg.svg";
+import pushBtn from "./../assets/alert_button_svg.svg";
+import inforBtn from "./../assets/info_button_svg.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import useLoginSelect from "../context/useLoginSelect";
 import { useAlertContext } from "../context/useAlertContext";
@@ -46,17 +46,12 @@ const Bottom = () => {
   const handleClick = (btn: BottomButton) => {
     const token = localStorage.getItem("token");
 
-    // 홈 버튼을 눌렀을 때 step1로 초기화
     if (btn.name === "홈") {
-      // CategoryContext가 있다면 초기화 실행
       if (categoryContext?.handleCategoryReset) {
         categoryContext.handleCategoryReset();
       } else {
-        // CategoryContext가 없어도 URL 해시로 초기화
         window.history.replaceState(null, "", "#step1");
       }
-
-      // 홈페이지 이동 전에 약간의 딜레이 (초기화가 완료되도록)
       setTimeout(() => {
         nav(btn.path);
       }, 50);

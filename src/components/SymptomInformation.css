@@ -72,17 +72,13 @@ li {
   padding: 30px;
   margin: 0;
   list-style: none;
-  /* 터치 스크롤 최적화 */
-  -webkit-overflow-scrolling: touch;
 
-  /* 터치 지연 제거 */
+  -webkit-overflow-scrolling: touch;
   touch-action: pan-x;
 
-  /* 하드웨어 가속 */
   transform: translateZ(0);
   will-change: transform;
 
-  /* 스크롤바 숨기기 (모바일) */
   -webkit-scrollbar: none;
   scrollbar-width: none;
 }

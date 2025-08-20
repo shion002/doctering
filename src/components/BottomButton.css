@@ -13,3 +13,7 @@
   top: 0px;
   left: 45px;
 }
+
+.BottomButton .image_box img {
+  height: 80px;
+}

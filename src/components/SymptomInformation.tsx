@@ -3,7 +3,7 @@ import { Hospital } from "../type/Hospital";
 import FadeInUp from "../util/FadeInUp";
 import KakaoMap from "./KakaoMap";
 import "./SymptomInformation.css";
-import { motion, useAnimation, useMotionValue } from "framer-motion";
+import { motion, PanInfo, useAnimation, useMotionValue } from "framer-motion";
 import bookmark from "./../assets/bookmark_button.jpg";
 import axios from "axios";
 import useLoginSelect from "../context/useLoginSelect";
@@ -38,35 +38,33 @@ const SymptomInformation = ({
     setDisplayedHospitals(hospitals);
   }, [hospitals]);
 
-  const handleDragEnd = () => {
+  const handleDragEnd = (
+    event: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
     const newX = x.get();
+    const velocity = info.velocity.x;
+
     const maxX = 0;
     const minX = -CARD_WIDTH * (hospitals.length - 1);
 
-    let clampedX = newX;
-
-    if (newX > maxX) {
-      clampedX = maxX;
-    } else if (newX < minX) {
-      clampedX = minX;
-    }
-
-    // animate 카드 위치
     controls.start({
-      x: clampedX,
+      x: newX,
       transition: {
-        type: "spring",
-        stiffness: 200, // 좀 더 부드럽게
-        damping: 25, // 댐핑 줄임
-        mass: 0.8, // 질량 추가
+        type: "inertia",
+        velocity: velocity,
+        power: 0.8,
+        timeConstant: 700,
+        bounceStiffness: 300,
+        bounceDamping: 30,
+        min: minX,
+        max: maxX,
       },
     });
 
-    // 위치 기억 업데이트
-    setCurrentX(clampedX);
+    setCurrentX(newX);
   };
 
-  // 위치 바뀔 때마다 x도 직접 업데이트
   useEffect(() => {
     x.set(currentX);
   }, [currentX]);

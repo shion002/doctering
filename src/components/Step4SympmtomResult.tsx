@@ -72,26 +72,30 @@ const Step4SymptomResult = () => {
 
   const token = localStorage.getItem("token");
 
-  // 🔥 해결책: 위도, 경도, 진료과를 개별 값으로 의존성에 사용
   useEffect(() => {
     if (userLocation && result?.department && result.department.length > 0) {
-      const headers = token
-        ? { Authorization: `Bearer ${token}`, withCredentials: true }
-        : {};
+      console.log("병원 추천 요청 시작");
 
-      console.log("병원 추천 요청 시작"); // 로그로 호출 횟수 확인
+      const axiosConfig = {
+        params: {
+          lat: userLocation[0],
+          lng: userLocation[1],
+          department: result.department[0],
+          radius: 3,
+          limit: 5,
+        },
+        // withCredentials는 최상위 레벨에 설정
+        withCredentials: true,
+        // headers는 별도로 설정
+        ...(token && {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }),
+      };
 
       axios
-        .get(`${baseURL}/api/hospitals/recommend`, {
-          params: {
-            lat: userLocation[0],
-            lng: userLocation[1],
-            department: result.department[0],
-            radius: 3,
-            limit: 5,
-          },
-          headers,
-        })
+        .get(`${baseURL}/api/hospitals/recommend`, axiosConfig)
         .then((res) => {
           console.log("서버 응답:", res.data);
           setHospitals(Array.isArray(res.data) ? res.data : []);
