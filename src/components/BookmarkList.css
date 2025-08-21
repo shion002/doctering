@@ -1,5 +1,5 @@
 .BookmarkList > .bookmark {
-  padding: 15px;
+  padding: 5px 15px;
   border: 1px solid rgb(185, 212, 204);
   margin: 10px 0;
   cursor: pointer;
@@ -8,10 +8,11 @@
 
 .BookmarkList > .bookmark > .bookmark_address {
   color: rgb(87, 129, 129);
+  font-size: 14px;
 }
 .BookmarkList > .bookmark > .bookmark_tab_action {
   position: absolute;
-  width: 97%;
+  width: 95%;
   left: 50%;
   transform: translate(-50%, 0);
   cursor: auto;
@@ -20,6 +21,7 @@
   z-index: 1002;
   overflow: hidden;
   pointer-events: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .BookmarkList {
@@ -46,9 +48,9 @@
 }
 
 .bookmark_tab_action.below {
-  top: 180px;
+  top: 60px;
 }
 
 .bookmark_tab_action.above {
-  bottom: 180px;
+  bottom: 60px;
 }

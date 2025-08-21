@@ -84,14 +84,9 @@ const Step4SymptomResult = () => {
           radius: 3,
           limit: 5,
         },
-        // withCredentials는 최상위 레벨에 설정
-        withCredentials: true,
-        // headers는 별도로 설정
-        ...(token && {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }),
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       };
 
       axios

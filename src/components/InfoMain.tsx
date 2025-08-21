@@ -54,7 +54,7 @@ const InfoMain = () => {
         <h5>설정</h5>
         <div>
           <img src={location} />
-          <p>내 주소 설정</p>
+          <p>내 주소 설정(미구현)</p>
         </div>
         <div onClick={logoutClick}>
           <img src={logout} />

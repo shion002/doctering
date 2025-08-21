@@ -55,7 +55,7 @@ const BookmarkList = ({ selectIndex, setSelectIndex }: BookmarkListProps) => {
     if (selectIndex !== null) {
       if (selectedRef.current) {
         const rect = selectedRef.current.getBoundingClientRect();
-        const halfScreen = window.innerHeight / 2;
+        const halfScreen = window.innerHeight / 2.5;
         setTabDiraction(rect.top > halfScreen ? "up" : "down");
       }
       document.addEventListener("mousedown", handleClickOutside);

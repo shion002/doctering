@@ -3,7 +3,7 @@
   padding: 0 10px;
 }
 .BookmarkTab > .bookmark_tab_address {
-  font-size: 14px;
+  font-size: 12px;
   color: rgb(163, 163, 163);
   margin-top: 0;
   padding: 0 10px;
@@ -16,7 +16,7 @@
 
 .BookmarkTab > .bookmark_tab_departments {
   margin-top: 0;
-  font-size: 14px;
+  font-size: 12px;
   color: rgb(95, 95, 95);
   padding: 0 10px;
 }
