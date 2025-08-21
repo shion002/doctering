@@ -9,6 +9,7 @@ import axios from "axios";
 import useLoginSelect from "../context/useLoginSelect";
 import { useCategoryContext } from "../context/useCategoryContext";
 import { baseURL } from "../util/baseUrl";
+import { formatPhone } from "../util/FormatPhone";
 
 interface SymptomType {
   disease: readonly string[];
@@ -179,7 +180,7 @@ const SymptomInformation = ({
                           {hospital.address}
                         </p>
                         <h5>연락처</h5>
-                        <p>{hospital.phone}</p>
+                        <p>{formatPhone(hospital.phone)}</p>
                         <button className="sypmtom_hospital_reservation">
                           예약하기
                         </button>

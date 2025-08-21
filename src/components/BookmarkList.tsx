@@ -3,6 +3,7 @@ import axios from "axios";
 import "./BookmarkList.css";
 import BookmarkTab from "./BookmarkTab";
 import { baseURL } from "../util/baseUrl";
+import { formatPhone } from "../util/FormatPhone";
 
 interface BookmarkHospital {
   id: number;
@@ -85,7 +86,7 @@ const BookmarkList = ({ selectIndex, setSelectIndex }: BookmarkListProps) => {
         >
           <h3 className="bookmark_name">{bookmarkList.name}</h3>
           <p className="bookmark_address">{bookmarkList.address}</p>
-          <p className="bookmark_phone">{bookmarkList.phone}</p>
+          <p className="bookmark_phone">{formatPhone(bookmarkList.phone)}</p>
 
           {selectIndex === index && (
             <div
