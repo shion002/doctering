@@ -9,7 +9,6 @@ import axios from "axios";
 import useLoginSelect from "../context/useLoginSelect";
 import { useCategoryContext } from "../context/useCategoryContext";
 import { baseURL } from "../util/baseUrl";
-import { formatPhone } from "../util/FormatPhone";
 
 interface SymptomType {
   disease: readonly string[];
@@ -35,6 +34,9 @@ const SymptomInformation = ({
   const { open: openLoginSelect } = useLoginSelect();
   const { category, categoryHistory } = useCategoryContext();
 
+  const container = document.querySelector(".symptom_border") as HTMLElement;
+  const containerWidth = container?.offsetWidth ?? window.innerWidth;
+
   useEffect(() => {
     setDisplayedHospitals(hospitals);
   }, [hospitals]);
@@ -47,7 +49,15 @@ const SymptomInformation = ({
     const velocity = info.velocity.x;
 
     const maxX = 0;
-    const minX = -CARD_WIDTH * (hospitals.length - 1);
+    let minX: number;
+
+    if (containerWidth < 600) {
+      minX = -CARD_WIDTH * (hospitals.length - 1) - 150;
+    } else {
+      minX = -CARD_WIDTH * (hospitals.length - 1);
+    }
+
+    const minXFix = minX;
 
     controls.start({
       x: newX,
@@ -58,7 +68,7 @@ const SymptomInformation = ({
         timeConstant: 700,
         bounceStiffness: 300,
         bounceDamping: 30,
-        min: minX,
+        min: minXFix,
         max: maxX,
       },
     });
@@ -180,7 +190,7 @@ const SymptomInformation = ({
                           {hospital.address}
                         </p>
                         <h5>연락처</h5>
-                        <p>{formatPhone(hospital.phone)}</p>
+                        <p>{hospital.phone}</p>
                         <button className="sypmtom_hospital_reservation">
                           예약하기
                         </button>

@@ -81,8 +81,8 @@ const Step4SymptomResult = () => {
           lat: userLocation[0],
           lng: userLocation[1],
           department: result.department[0],
-          radius: 3,
-          limit: 5,
+          radius: 2,
+          limit: 10,
         },
         headers: {
           Authorization: `Bearer ${token}`,
@@ -100,12 +100,7 @@ const Step4SymptomResult = () => {
           setHospitals([]);
         });
     }
-  }, [
-    userLocation?.[0], // 위도만
-    userLocation?.[1], // 경도만
-    result?.department?.[0], // 첫 번째 진료과만
-    // token 제거 (localStorage는 컴포넌트 생명주기 동안 변하지 않음)
-  ]);
+  }, [userLocation?.[0], userLocation?.[1], result?.department?.[0]]);
 
   return (
     <div>

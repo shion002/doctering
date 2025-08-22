@@ -7,6 +7,5 @@ export interface Hospital {
   lat: number;
   lng: number;
   distance: number;
-  startDate: string;
   bookmarked: boolean;
 }
