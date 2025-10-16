@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./AlertList.css";
 import { useAlertContext } from "../context/useAlertContext";
-import { baseURL } from "../util/baseUrl";
+import { apiURL } from "../util/baseUrl";
 
 interface AlertListType {
   title: string;
@@ -27,7 +27,7 @@ const AlertList = () => {
     if (!token) return;
 
     axios
-      .get(`${baseURL}/api/alert/list`, {
+      .get(`${apiURL}/api/alert/list`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -39,7 +39,7 @@ const AlertList = () => {
             new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime()
         );
         setAlertList(sortedAlerts);
-        return axios.put(`${baseURL}/api/alert/read`, null, {
+        return axios.put(`${apiURL}/api/alert/read`, null, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

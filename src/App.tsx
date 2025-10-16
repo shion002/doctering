@@ -10,7 +10,7 @@ import Alert from "./page/Alert";
 import LoginSelectProvider from "./context/LoginSelectProvider";
 import Info from "./page/Info";
 import { AlertProvider } from "./context/AlertProvider";
-import { baseURL } from "./util/baseUrl";
+import { apiURL } from "./util/baseUrl";
 import LocationBlockScreen from "./components/LocationBlockScreen";
 
 interface LocationState {
@@ -101,7 +101,7 @@ function App() {
     if (!token) return;
 
     try {
-      await axios.get(`${baseURL}/api/oauth/validate`, {
+      await axios.get(`${apiURL}/api/oauth/validate`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log("세션 유지 로그인");

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ReactNode, useEffect, useState } from "react";
 import { AlertContext } from "./AlertContext";
-import { baseURL } from "../util/baseUrl";
+import { apiURL } from "../util/baseUrl";
 
 interface Props {
   children: ReactNode;
@@ -18,7 +18,7 @@ export const AlertProvider = ({ children }: Props) => {
     }
 
     axios
-      .get(`${baseURL}/api/alert/unread`, {
+      .get(`${apiURL}/api/alert/unread`, {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
       })

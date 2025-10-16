@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import { useCategoryContext } from "../context/useCategoryContext";
-import { baseURL } from "../util/baseUrl";
+import { apiURL } from "../util/baseUrl";
 
 const Callback = () => {
   const nav = useNavigate();
@@ -42,7 +42,7 @@ const Callback = () => {
 
           axios
             .post(
-              `${baseURL}/api/bookmark/check`,
+              `${apiURL}/api/bookmark/check`,
               {
                 hospitalId: hospitalId,
               },

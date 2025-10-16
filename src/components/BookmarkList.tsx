@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "./BookmarkList.css";
 import BookmarkTab from "./BookmarkTab";
-import { baseURL } from "../util/baseUrl";
+import { apiURL } from "../util/baseUrl";
 
 interface BookmarkHospital {
   id: number;
@@ -27,7 +27,7 @@ const BookmarkList = ({ selectIndex, setSelectIndex }: BookmarkListProps) => {
 
   useEffect(() => {
     axios
-      .get(`${baseURL}/api/bookmark/list`, {
+      .get(`${apiURL}/api/bookmark/list`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

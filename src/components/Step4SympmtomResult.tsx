@@ -8,7 +8,7 @@ import { CategoryMap } from "../util/CategoryMap";
 import SymptomInformation from "./SymptomInformation";
 import axios from "axios";
 import { Hospital } from "../type/Hospital";
-import { baseURL } from "../util/baseUrl";
+import { apiURL } from "../util/baseUrl";
 
 interface SymptomResultItem {
   disease: string[];
@@ -90,7 +90,7 @@ const Step4SymptomResult = () => {
       };
 
       axios
-        .get(`${baseURL}/api/hospitals/recommend`, axiosConfig)
+        .get(`${apiURL}/api/hospitals/recommend`, axiosConfig)
         .then((res) => {
           console.log("서버 응답:", res.data);
           setHospitals(Array.isArray(res.data) ? res.data : []);

@@ -1,6 +1,6 @@
 import axios from "axios";
 import "./BookmarkTab.css";
-import { baseURL } from "../util/baseUrl";
+import { apiURL } from "../util/baseUrl";
 
 interface BookmarkTabProps {
   bookmarkHospital: {
@@ -19,7 +19,7 @@ const bookmarkCancel = (hospitalId: number) => {
   if (con) {
     axios
       .post(
-        `${baseURL}/api/bookmark/delete`,
+        `${apiURL}/api/bookmark/delete`,
         {
           hospitalId: hospitalId,
         },

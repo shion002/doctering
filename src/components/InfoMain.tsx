@@ -4,7 +4,7 @@ import "./InfoMain.css";
 import location from "./../assets/location_icon.svg";
 import { useNavigate } from "react-router-dom";
 import logout from "./../assets/logout_icon.svg";
-import { baseURL } from "../util/baseUrl";
+import { apiURL } from "../util/baseUrl";
 
 const InfoMain = () => {
   const [memberName, setMemberName] = useState("");
@@ -25,7 +25,7 @@ const InfoMain = () => {
 
   useEffect(() => {
     axios
-      .get(`${baseURL}/api/oauth/member`, {
+      .get(`${apiURL}/api/oauth/member`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         withCredentials: true,
       })

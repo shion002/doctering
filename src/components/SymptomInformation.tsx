@@ -8,7 +8,7 @@ import bookmark from "./../assets/bookmark_button.jpg";
 import axios from "axios";
 import useLoginSelect from "../context/useLoginSelect";
 import { useCategoryContext } from "../context/useCategoryContext";
-import { baseURL } from "../util/baseUrl";
+import { apiURL } from "../util/baseUrl";
 
 interface SymptomType {
   disease: readonly string[];
@@ -100,7 +100,7 @@ const SymptomInformation = ({
 
     axios
       .post(
-        `${baseURL}/api/bookmark/check`,
+        `${apiURL}/api/bookmark/check`,
         {
           hospitalId: hospital.id,
         },
