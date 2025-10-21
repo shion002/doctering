@@ -20,7 +20,7 @@ li {
 
 .symptom_first {
   background-color: #50c439;
-  padding: 20px 0;
+  padding: 20px 30px;
   margin: 25px;
   border-radius: 10px;
 }
@@ -32,7 +32,7 @@ li {
 
 .symptom_sec {
   background-color: #2c86da;
-  padding: 20px 0;
+  padding: 20px 30px;
   margin: 25px;
   border-radius: 10px;
 }
@@ -44,7 +44,7 @@ li {
 
 .symptom_trd {
   background-color: #7c656e;
-  padding: 20px 0;
+  padding: 20px 30px;
   margin: 25px;
   border-radius: 10px;
 }
@@ -127,8 +127,11 @@ li {
 
 .symptom_map {
   margin: 40px 50px 0px 50px;
-  border-radius: 20px;
   overflow: hidden;
+}
+
+.symptom_map > div {
+  border-radius: 20px;
 }
 .sypmtom_hospital_reservation {
   border: none;
@@ -147,4 +150,33 @@ li {
 }
 .sypmtom_list_address {
   font-size: 14px;
+}
+.map_button_box {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  height: 50px;
+  width: 70%;
+  gap: 40px;
+  margin: 15px auto;
+  border: 1px solid rgb(235, 235, 235);
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.map_button_box img {
+  width: 50px;
+  height: 50px;
+}
+
+@media (max-width: 1000px) {
+  .symptom_title,
+  .symptom_trd_title {
+    font-size: 24px;
+  }
+
+  .symptom_first_list,
+  .symptom_sec_list {
+    font-size: 16px;
+  }
 }

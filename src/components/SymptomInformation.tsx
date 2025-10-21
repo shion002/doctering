@@ -9,6 +9,7 @@ import axios from "axios";
 import useLoginSelect from "../context/useLoginSelect";
 import { useCategoryContext } from "../context/useCategoryContext";
 import { apiURL } from "../util/baseUrl";
+import kakaomapIcon from "./../assets/kakaomap.webp";
 
 interface SymptomType {
   disease: readonly string[];
@@ -124,6 +125,34 @@ const SymptomInformation = ({
       });
   };
 
+  const openKakaoMap = (placeName: string) => {
+    const kakaoUrl = `kakaomap://search?q=${encodeURIComponent(placeName)}`;
+    const webFallback = `https://map.kakao.com/link/search/${encodeURIComponent(
+      placeName
+    )}`;
+    const playStore = `https://play.google.com/store/apps/details?id=net.daum.android.map`;
+    const appStore = `https://apps.apple.com/kr/app/kakaomap/id304608425`;
+
+    // 앱 실행 시도
+    window.location.href = kakaoUrl;
+
+    // 1초 후에도 앱 실행 안 되면 웹 or 스토어로 이동
+    const timer = setTimeout(() => {
+      const ua = navigator.userAgent.toLowerCase();
+
+      if (/android/.test(ua)) {
+        window.location.href = playStore;
+      } else if (/iphone|ipad|ipod/.test(ua)) {
+        window.location.href = appStore;
+      } else {
+        window.open(webFallback, "_blank");
+      }
+    }, 1000);
+
+    window.addEventListener("blur", () => clearTimeout(timer));
+    window.addEventListener("pagehide", () => clearTimeout(timer));
+  };
+
   return (
     <>
       <FadeInUp>
@@ -191,9 +220,25 @@ const SymptomInformation = ({
                         </p>
                         <h5>연락처</h5>
                         <p>{hospital.phone}</p>
-                        <button className="sypmtom_hospital_reservation">
+                        <button
+                          className="sypmtom_hospital_reservation"
+                          onClick={() => {
+                            window.location.href = `tel:${hospital.phone}`;
+                          }}
+                        >
                           예약하기
                         </button>
+                        <div
+                          className="map_button"
+                          onClick={() => {
+                            openKakaoMap(hospital.name);
+                          }}
+                        >
+                          <div className="map_button_box">
+                            <img src={kakaomapIcon} />
+                            <p>카카오맵 열기</p>
+                          </div>
+                        </div>
                       </li>
                     ))}
                   </ul>
