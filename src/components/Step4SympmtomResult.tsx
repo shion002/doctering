@@ -52,15 +52,36 @@ const Step4SymptomResult = () => {
   const result = getSymptomResult();
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        const { latitude, longitude } = pos.coords;
-        setUserLocation([latitude, longitude]);
-      },
-      (err) => {
-        console.error("위치 정보를 가져오지 못했습니다:", err);
-      }
-    );
+    if (!("geolocation" in navigator)) {
+      console.error("이 브라우저는 위치 정보를 지원하지 않습니다.");
+      return;
+    }
+
+    navigator.permissions
+      ?.query({ name: "geolocation" as PermissionName })
+      .then((result) => {
+        if (result.state === "granted" || result.state === "prompt") {
+          getLocation();
+        } else {
+          alert("위치 권한이 거부되어 위치를 가져올 수 없습니다.");
+        }
+      })
+      .catch(() => {
+        getLocation();
+      });
+
+    function getLocation() {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const { latitude, longitude } = pos.coords;
+          setUserLocation([latitude, longitude]);
+        },
+        (err) => {
+          console.error("위치 정보를 가져오지 못했습니다:", err.message);
+        },
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+      );
+    }
   }, []);
 
   const token = localStorage.getItem("token");
