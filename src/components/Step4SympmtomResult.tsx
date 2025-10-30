@@ -21,7 +21,6 @@ const Step4SymptomResult = () => {
   );
   const [hospitals, setHospitals] = useState<Hospital[]>([]);
 
-  // 타입 안전하게 result 가져오기
   const getSymptomResult = (): SymptomResultItem | undefined => {
     if (!selectedSymptom) return undefined;
 
@@ -37,7 +36,6 @@ const Step4SymptomResult = () => {
 
     const rawResult = symptomData[0];
 
-    // 타입을 맞춰서 반환
     return {
       disease: Array.isArray(rawResult.disease) ? [...rawResult.disease] : [],
       measures: Array.isArray(rawResult.measures)
@@ -53,34 +51,15 @@ const Step4SymptomResult = () => {
 
   const result = getSymptomResult();
 
-  // 위치 받아오기
   useEffect(() => {
-    if (!("geolocation" in navigator)) {
-      console.error("이 브라우저는 위치 정보를 지원하지 않습니다.");
-      return;
-    }
-
-    navigator.permissions
-      ?.query({ name: "geolocation" as PermissionName })
-      .then((result) => {
-        console.log("위치 권한 상태:", result.state);
-      })
-      .catch(() => {});
-
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude } = pos.coords;
         setUserLocation([latitude, longitude]);
       },
       (err) => {
-        console.error("위치 정보를 가져오지 못했습니다:", err.message);
-        if (err.code === 1)
-          alert("위치 권한이 거부되었습니다. 브라우저 설정을 확인하세요.");
-        else if (err.code === 2)
-          alert("위치를 가져올 수 없습니다. GPS를 켜주세요.");
-        else if (err.code === 3) alert("위치 요청 시간이 초과되었습니다.");
-      },
-      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+        console.error("위치 정보를 가져오지 못했습니다:", err);
+      }
     );
   }, []);
 
