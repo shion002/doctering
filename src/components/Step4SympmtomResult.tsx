@@ -1,7 +1,3 @@
-// 1단계: userLocation 의존성 문제 해결
-// [userLocation, result?.department?.[0]] 에서
-// userLocation 배열이 매번 새로 생성되는 문제
-
 import { useEffect, useState } from "react";
 import { useCategoryContext } from "../context/useCategoryContext";
 import { CategoryMap } from "../util/CategoryMap";
@@ -59,14 +55,32 @@ const Step4SymptomResult = () => {
 
   // 위치 받아오기
   useEffect(() => {
+    if (!("geolocation" in navigator)) {
+      console.error("이 브라우저는 위치 정보를 지원하지 않습니다.");
+      return;
+    }
+
+    navigator.permissions
+      ?.query({ name: "geolocation" as PermissionName })
+      .then((result) => {
+        console.log("위치 권한 상태:", result.state);
+      })
+      .catch(() => {});
+
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude } = pos.coords;
         setUserLocation([latitude, longitude]);
       },
       (err) => {
-        console.error("위치 정보를 가져오지 못했습니다:", err);
-      }
+        console.error("위치 정보를 가져오지 못했습니다:", err.message);
+        if (err.code === 1)
+          alert("위치 권한이 거부되었습니다. 브라우저 설정을 확인하세요.");
+        else if (err.code === 2)
+          alert("위치를 가져올 수 없습니다. GPS를 켜주세요.");
+        else if (err.code === 3) alert("위치 요청 시간이 초과되었습니다.");
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
     );
   }, []);
 
