@@ -11,14 +11,12 @@ const KakaoMap = ({ center, hospitals }: KakaoMapProps) => {
 
   useEffect(() => {
     if (!center) return;
-    // 스크립트가 이미 로드되어 있으면 바로 resolve
     const loadKakaoMapScript = () => {
       return new Promise<void>((resolve, reject) => {
         if (window.kakao && window.kakao.maps) {
           resolve();
           return;
         }
-        // 스크립트 없으면 생성
         const script = document.createElement("script");
         script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${
           import.meta.env.VITE_REACT_APP_KAKAO_MAP_KEY

@@ -57,7 +57,6 @@ export const CategoryProvider = ({ children }: Props) => {
     setCategoryHistory((prev) => [...prev, newCategory]);
     setStep((prev) => {
       const newStep = prev + 1;
-      // 앞으로 갈 때는 새로운 히스토리 엔트리 추가
       window.location.hash = `step${newStep}`;
       return newStep;
     });

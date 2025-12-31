@@ -9,7 +9,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useLoginSelect from "../context/useLoginSelect";
 import { useAlertContext } from "../context/useAlertContext";
 import { useContext } from "react";
-import { CategoryContext } from "../context/CategoryContext"; // CategoryContext import 추가
+import { CategoryContext } from "../context/CategoryContext";
 
 const Bottom = () => {
   const [active, setActive] = useState("홈");
@@ -17,7 +17,7 @@ const Bottom = () => {
   const location = useLocation();
   const { open: openLoginSelect } = useLoginSelect();
   const { readAlert } = useAlertContext();
-  const categoryContext = useContext(CategoryContext); // CategoryContext 사용
+  const categoryContext = useContext(CategoryContext);
 
   interface BottomButton {
     name: string;

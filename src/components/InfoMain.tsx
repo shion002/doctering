@@ -8,7 +8,6 @@ import { apiURL } from "../util/baseUrl";
 
 const InfoMain = () => {
   const [memberName, setMemberName] = useState("");
-  const [memberEmail, setMemberEmail] = useState("");
 
   const nav = useNavigate();
 
@@ -32,7 +31,6 @@ const InfoMain = () => {
       .then((res) => {
         console.log(res.data);
         setMemberName(res.data.nickname);
-        setMemberEmail(res.data.email);
       })
       .catch((e) => {
         console.error(e);

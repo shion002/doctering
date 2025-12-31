@@ -29,7 +29,6 @@ const Callback = () => {
       localStorage.setItem("token", token);
       alert("로그인 완료");
 
-      // postLoginAction이 있는 경우
       const savedAction = localStorage.getItem("postLoginAction");
       if (savedAction) {
         const action = JSON.parse(savedAction);

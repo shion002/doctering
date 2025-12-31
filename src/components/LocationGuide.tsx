@@ -4,7 +4,6 @@ const LocationGuide = () => (
   <div className="space-y-4">
     <p className="text-sm text-gray-500">위치 정보 접근을 허용해주세요:</p>
 
-    {/* 데스크탑 */}
     <div className="hidden md:block">
       <p className="guide-label">PC/노트북:</p>
       <ol className="guide-box">
@@ -14,7 +13,6 @@ const LocationGuide = () => (
       </ol>
     </div>
 
-    {/* 모바일 */}
     <div className="block md:hidden">
       <p className="guide-label">모바일:</p>
       <div className="guide-box">

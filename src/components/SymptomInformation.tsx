@@ -133,10 +133,8 @@ const SymptomInformation = ({
     const playStore = `https://play.google.com/store/apps/details?id=net.daum.android.map`;
     const appStore = `https://apps.apple.com/kr/app/kakaomap/id304608425`;
 
-    // 앱 실행 시도
     window.location.href = kakaoUrl;
 
-    // 1초 후에도 앱 실행 안 되면 웹 or 스토어로 이동
     const timer = setTimeout(() => {
       const ua = navigator.userAgent.toLowerCase();
 

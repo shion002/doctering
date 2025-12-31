@@ -32,7 +32,7 @@ const LOCATION_ERROR_MESSAGES = {
 const GEOLOCATION_OPTIONS = {
   enableHighAccuracy: true,
   timeout: 10000,
-  maximumAge: 300000, // 5분
+  maximumAge: 300000,
 } as const;
 
 function App() {
@@ -104,16 +104,12 @@ function App() {
       await axios.get(`${apiURL}/api/oauth/validate`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log("세션 유지 로그인");
     } catch (error) {
-      // axios 에러인지 확인하는 타입 가드
       if (axios.isAxiosError(error)) {
         if (token && error.response?.status === 401) {
           localStorage.removeItem("token");
-          console.log("세션 만료 로그아웃됨");
         }
       } else {
-        // axios 에러가 아닌 경우 처리
         console.error("알 수 없는 오류:", error);
       }
     }
@@ -124,7 +120,6 @@ function App() {
     validateToken();
   }, []);
 
-  // 위치정보가 없으면 차단 화면 표시
   const shouldShowLocationScreen =
     location.loading ||
     location.error ||
