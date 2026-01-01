@@ -125,19 +125,8 @@ const Step4SymptomResult = () => {
     <div>
       {result && (
         <>
-          {isLoadingHospitals && (
-            <div
-              style={{
-                textAlign: "center",
-                padding: "20px",
-                fontSize: "16px",
-                color: "#666",
-              }}
-            >
-              병원 탐색중입니다...
-            </div>
-          )}
           <SymptomInformation
+            loading={isLoadingHospitals}
             disease={result.disease}
             measures={result.measures}
             department={result.department}

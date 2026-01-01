@@ -18,6 +18,7 @@ interface SymptomType {
   serverity: string | undefined;
   hospitals: Hospital[];
   userLocation: [number, number] | null;
+  loading: boolean;
 }
 const CARD_WIDTH = 360;
 const SymptomInformation = ({
@@ -27,6 +28,7 @@ const SymptomInformation = ({
   department = [],
   hospitals,
   userLocation,
+  loading,
 }: SymptomType) => {
   const [currentX, setCurrentX] = useState(0);
   const x = useMotionValue(currentX);
@@ -249,7 +251,11 @@ const SymptomInformation = ({
               </div>
             </>
           ) : (
-            <p>주변에 탐색된 병원이 없습니다</p>
+            <p>
+              {loading
+                ? "주변 병원을 탐색중입니다..."
+                : "주변에 탐색된 병원이 없습니다"}
+            </p>
           )}
         </div>
       </FadeInUp>
