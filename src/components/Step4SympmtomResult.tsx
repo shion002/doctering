@@ -20,6 +20,7 @@ const Step4SymptomResult = () => {
     null
   );
   const [hospitals, setHospitals] = useState<Hospital[]>([]);
+  const [isLoadingHospitals, setIsLoadingHospitals] = useState(false);
 
   const getSymptomResult = (): SymptomResultItem | undefined => {
     if (!selectedSymptom) return undefined;
@@ -89,6 +90,7 @@ const Step4SymptomResult = () => {
   useEffect(() => {
     if (userLocation && result?.department && result.department.length > 0) {
       console.log("병원 추천 요청 시작");
+      setIsLoadingHospitals(true);
 
       const axiosConfig = {
         params: {
@@ -112,6 +114,9 @@ const Step4SymptomResult = () => {
         .catch((err) => {
           console.error("병원 추천 실패", err);
           setHospitals([]);
+        })
+        .finally(() => {
+          setIsLoadingHospitals(false);
         });
     }
   }, [userLocation?.[0], userLocation?.[1], result?.department?.[0]]);
@@ -120,6 +125,18 @@ const Step4SymptomResult = () => {
     <div>
       {result && (
         <>
+          {isLoadingHospitals && (
+            <div
+              style={{
+                textAlign: "center",
+                padding: "20px",
+                fontSize: "16px",
+                color: "#666",
+              }}
+            >
+              병원 탐색중입니다...
+            </div>
+          )}
           <SymptomInformation
             disease={result.disease}
             measures={result.measures}
